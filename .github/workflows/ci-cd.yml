@@ -68,15 +68,15 @@ jobs:
       # - name: Push Docker image for frontend to Google Artifact Registry
       #   run: docker push asia-southeast2-docker.pkg.dev/${{ secrets.PROJECT_ID }}/voz20231/frontend:latest
     
-      - name: Deploy backend to Google Cloud Run
-        uses: google-github-actions/deploy-cloudrun@v1
-        with:
-          service_account_key: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}
-          image: asia-southeast2-docker.pkg.dev/${{ secrets.PROJECT_ID }}/voz20231/backend:latest
-          service: cloudrun-backend-service
-          region: asia-southeast2
-          project_id: ${{ secrets.PROJECT_ID }}
-          args: --allow-unauthenticated
+      # - name: Deploy backend to Google Cloud Run
+      #   uses: google-github-actions/deploy-cloudrun@v1
+      #   with:
+      #     service_account_key: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}
+      #     image: asia-southeast2-docker.pkg.dev/${{ secrets.PROJECT_ID }}/voz20231/backend:latest
+      #     service: cloudrun-backend-service
+      #     region: asia-southeast2
+      #     project_id: ${{ secrets.PROJECT_ID }}
+      #     args: --allow-unauthenticated
       
       # - name: Deploy frontend to Google Cloud Run
       #   uses: google-github-actions/deploy-cloudrun@main
