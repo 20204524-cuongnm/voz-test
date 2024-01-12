@@ -23,8 +23,7 @@ jobs:
           envkey_SECRET_KEY: SECRET_KEY
           envkey_OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           envkey_GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-          directory: backend
-          file_name: .env
+          directory: ../backend
           
       - name: Code Checkout
         uses: actions/checkout@master
