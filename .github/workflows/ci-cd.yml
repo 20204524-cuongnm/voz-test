@@ -27,6 +27,7 @@ jobs:
       #     filename: .env
       - name : create .envfile
         working-directory: backend
+        run: echo ""
         env: 
           PORT: 3003
           MONGODB_URL_DEV: ${{ secrets.MONGODB_URL_DEV }}
