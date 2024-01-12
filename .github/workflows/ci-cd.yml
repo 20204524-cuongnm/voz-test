@@ -14,15 +14,15 @@ jobs:
       - name: Create .env file
         uses: ozaytsev86/create-env-file@v1
         with:
-          PORT=3003
-          MONGODB_URL_DEV=${{secrets.MONGODB_URL_DEV}}
-          MONGODB_URL_PRODUCT=${{secrets.MONGODB_URL_PRODUCT}}
-          GOOGLE_CLIENT_ID=${{secrets.GOOGLE_CLIENT_ID}}
-          GOOGLE_CLIENT_SECRET=${{secrets.GOOGLE_CLIENT_SECRET}}
-          CALLBACK_URL=http://localhost:3003/auth/google/callback
-          SECRET_KEY=SECRET_KEY
-          OPENAI_API_KEY=${{secrets.OPENAI_API_KEY}}
-          GEMINI_API_KEY=${{secrets.GEMINI_API_KEY}}
+          PORT: 3003
+          MONGODB_URL_DEV: ${{secrets.MONGODB_URL_DEV}}
+          MONGODB_URL_PRODUCT: ${{secrets.MONGODB_URL_PRODUCT}}
+          GOOGLE_CLIENT_ID: ${{secrets.GOOGLE_CLIENT_ID}}
+          GOOGLE_CLIENT_SECRET: ${{secrets.GOOGLE_CLIENT_SECRET}}
+          CALLBACK_URL: http://localhost:3003/auth/google/callback
+          SECRET_KEY: SECRET_KEY
+          OPENAI_API_KEY: ${{secrets.OPENAI_API_KEY}}
+          GEMINI_API_KEY: ${{secrets.GEMINI_API_KEY}}
   build-deploy:
     runs-on: ubuntu-latest
     steps:
