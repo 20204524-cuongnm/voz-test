@@ -56,11 +56,11 @@ app.use(
   })
 );
 
-app.use(passport.initialize());
-app.use(passport.session());
-passportService(passport);
+// app.use(passport.initialize());
+// app.use(passport.session());
+// passportService(passport);
 
-app.use(authRoutes);
+// app.use(authRoutes);
 route(app);
 
 // app.listen(PORT, () => {
