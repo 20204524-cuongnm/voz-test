@@ -23,7 +23,7 @@ jobs:
           envkey_SECRET_KEY: SECRET_KEY
           envkey_OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           envkey_GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-          directory: ./backend
+          directory: ../backend
           fail_on_empty: false
           filename: .env
       # - name : create .envfile
