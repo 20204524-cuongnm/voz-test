@@ -8,7 +8,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  create_env_file_job:
+  build-deploy:
     runs-on: ubuntu-latest
     steps:
       - name: Create .env file
@@ -23,9 +23,6 @@ jobs:
           SECRET_KEY: SECRET_KEY
           OPENAI_API_KEY: ${{secrets.OPENAI_API_KEY}}
           GEMINI_API_KEY: ${{secrets.GEMINI_API_KEY}}
-  build-deploy:
-    runs-on: ubuntu-latest
-    steps:
       - name: Code Checkout
         uses: actions/checkout@master
 
