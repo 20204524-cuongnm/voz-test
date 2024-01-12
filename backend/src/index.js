@@ -7,10 +7,10 @@ const route = require("./routes");
 const MongoDBStore = require("connect-mongodb-session")(session);
 
 require("dotenv").config();
-// const passportService = require("./services/passport");
-const { PORT, MONGODB_URL_DEV, MONGODB_URL_PRODUCT, SECRET_KEY, GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET } = require("./config");
+const passportService = require("./services/passport");
+const { PORT, MONGODB_URL_DEV, MONGODB_URL_PRODUCT, SECRET_KEY, BASE_URL } = require("./config");
 const { A_WEEK } = require("./constants");
-// const authRoutes = require("./routes/auth");
+const authRoutes = require("./routes/auth");
 const app = express();
 
 app.use(cors());
@@ -18,7 +18,6 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 //Connect to mongodb atlas
-console.log(PORT, MONGODB_URL_DEV, MONGODB_URL_PRODUCT, SECRET_KEY, GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET);
 const isDevelopment = process.env.NODE_ENV !== 'production';
 
 let mongoDBURL;
@@ -56,11 +55,11 @@ app.use(
   })
 );
 
-// app.use(passport.initialize());
-// app.use(passport.session());
-// passportService(passport);
+app.use(passport.initialize());
+app.use(passport.session());
+passportService(passport);
 
-// app.use(authRoutes);
+app.use(authRoutes);
 route(app);
 
 // app.listen(PORT, () => {
@@ -68,7 +67,6 @@ route(app);
 // });
 
 module.exports = app;
-
 if (isDevelopment) {
   app.listen(PORT, () => {
     console.log(`Example app listening on port ${PORT}`);
@@ -78,5 +76,3 @@ if (isDevelopment) {
     console.log(`Server is running on port ${PORT}`);
   });
 }
-
-
