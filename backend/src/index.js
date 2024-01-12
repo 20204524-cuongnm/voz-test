@@ -76,3 +76,5 @@ if (isDevelopment) {
     console.log(`Server is running on port ${PORT}`);
   });
 }
+console.log(MONGODB_URL_PRODUCT);
+
