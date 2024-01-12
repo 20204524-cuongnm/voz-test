@@ -11,20 +11,32 @@ jobs:
   build-deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Create .env file
-        uses: SpicyPizza/create-envfile@v2.0
-        with:
-          envkey_PORT: 3003
-          envkey_MONGODB_URL_DEV: ${{ secrets.MONGODB_URL_DEV }}
-          envkey_MONGODB_URL_PRODUCT: ${{ secrets.MONGODB_URL_PRODUCT }}
-          envkey_GOOGLE_CLIENT_ID: ${{ secrets.GOOGLE_CLIENT_ID }}
-          envkey_GOOGLE_CLIENT_SECRET: ${{ secrets.GOOGLE_CLIENT_SECRET }}
-          envkey_CALLBACK_URL: http://localhost:3003/auth/google/callback
-          envkey_SECRET_KEY: SECRET_KEY
-          envkey_OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
-          envkey_GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-          directory: backend
-          filename: .env
+      # - name: Create .env file
+      #   uses: SpicyPizza/create-envfile@v2.0
+      #   with:
+      #     envkey_PORT: 3003
+      #     envkey_MONGODB_URL_DEV: ${{ secrets.MONGODB_URL_DEV }}
+      #     envkey_MONGODB_URL_PRODUCT: ${{ secrets.MONGODB_URL_PRODUCT }}
+      #     envkey_GOOGLE_CLIENT_ID: ${{ secrets.GOOGLE_CLIENT_ID }}
+      #     envkey_GOOGLE_CLIENT_SECRET: ${{ secrets.GOOGLE_CLIENT_SECRET }}
+      #     envkey_CALLBACK_URL: http://localhost:3003/auth/google/callback
+      #     envkey_SECRET_KEY: SECRET_KEY
+      #     envkey_OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+      #     envkey_GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+      #     directory: backend
+      #     filename: .env
+      - name : create .envfile
+        working-directory: backend
+        env: 
+          PORT: 3003
+          MONGODB_URL_DEV: ${{ secrets.MONGODB_URL_DEV }}
+          MONGODB_URL_PRODUCT: ${{ secrets.MONGODB_URL_PRODUCT }}
+          GOOGLE_CLIENT_ID: ${{ secrets.GOOGLE_CLIENT_ID }}
+          GOOGLE_CLIENT_SECRET: ${{ secrets.GOOGLE_CLIENT_SECRET }}
+          CALLBACK_URL: http://localhost:3003/auth/google/callback
+          SECRET_KEY: SECRET_KEY
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
       - name: Code Checkout
         uses: actions/checkout@master
 
