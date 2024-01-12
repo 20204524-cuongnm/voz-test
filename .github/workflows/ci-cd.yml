@@ -10,7 +10,9 @@ on:
 jobs:
   build-deploy:
     runs-on: ubuntu-latest
-    steps:
+    steps:          
+      - name: Code Checkout
+        uses: actions/checkout@master
       - name: Create .env file
         uses: SpicyPizza/create-envfile@v2.0
         with:
@@ -25,9 +27,6 @@ jobs:
           envkey_GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           directory: backend
           
-      - name: Code Checkout
-        uses: actions/checkout@master
-
       - name: Set up Cloud SDK
         uses: "google-github-actions/setup-gcloud@v1"
         with:
