@@ -23,7 +23,7 @@ jobs:
           envkey_SECRET_KEY: SECRET_KEY
           envkey_OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           envkey_GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-          directory: ../backend
+          directory: backend
           file_name: README.md
           fail_on_empty: false
       # - name : create .envfile
