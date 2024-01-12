@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Create .env file
-        uses: SpicyPizza/create-envfile@v2.0
+        uses: ozaytsev86/create-env-file@v1
         with:
           INPUT_ENV_PORT: 3003
           INPUT_ENV_MONGODB_URL_DEV: ${{ secrets.MONGODB_URL_DEV }}
