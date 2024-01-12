@@ -12,17 +12,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Create .env file
-        uses: ozaytsev86/create-env-file@v1
+        uses: SpicyPizza/create-envfile@v2.0
         with:
-          INPUT_ENV_PORT: 3003
-          INPUT_ENV_MONGODB_URL_DEV: ${{ secrets.MONGODB_URL_DEV }}
-          INPUT_ENV_MONGODB_URL_PRODUCT: ${{ secrets.MONGODB_URL_PRODUCT }}
-          INPUT_ENV_GOOGLE_CLIENT_ID: ${{ secrets.GOOGLE_CLIENT_ID }}
-          INPUT_ENV_GOOGLE_CLIENT_SECRET: ${{ secrets.GOOGLE_CLIENT_SECRET }}
-          INPUT_ENV_CALLBACK_URL: http://localhost:3003/auth/google/callback
-          INPUT_ENV_SECRET_KEY: SECRET_KEY
-          INPUT_ENV_OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
-          INPUT_ENV_GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          envkey_PORT: 3003
+          envkey_MONGODB_URL_DEV: ${{ secrets.MONGODB_URL_DEV }}
+          envkey_MONGODB_URL_PRODUCT: ${{ secrets.MONGODB_URL_PRODUCT }}
+          envkey_GOOGLE_CLIENT_ID: ${{ secrets.GOOGLE_CLIENT_ID }}
+          envkey_GOOGLE_CLIENT_SECRET: ${{ secrets.GOOGLE_CLIENT_SECRET }}
+          envkey_CALLBACK_URL: http://localhost:3003/auth/google/callback
+          envkey_SECRET_KEY: SECRET_KEY
+          envkey_OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          envkey_GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           directory: backend
       - name: Code Checkout
         uses: actions/checkout@master
