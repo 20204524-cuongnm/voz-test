@@ -12,6 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Create .env file
+        run: cd backend
         uses: SpicyPizza/create-envfile@v2.0
         with:
           envkey_PORT: 3003
@@ -23,7 +24,7 @@ jobs:
           envkey_SECRET_KEY: SECRET_KEY
           envkey_OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           envkey_GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-          directory: backend
+          # directory: backend
           file_name: README.md
           fail_on_empty: false
       # - name : create .envfile
