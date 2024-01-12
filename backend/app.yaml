@@ -1,3 +1,5 @@
-runtime: nodejs20
+runtime: nodejs
+env: flex
+service: vozbackend
 env_variables:
   DEPLOYED_CALLBACK_URL: "https://voz-2023-410302.et.r.appspot.com/auth/google/callback"
