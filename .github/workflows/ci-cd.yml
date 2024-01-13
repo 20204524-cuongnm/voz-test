@@ -73,8 +73,8 @@ jobs:
         run: |-
           pwd && ls && echo "${{secrets.GOOGLE_APPLICATION_CREDENTIALS}}"
       - name: gcloud auth login with credentials
-          working-directory: backend
-          run : gcloud auth login --cred-file=credentials.json
+        working-directory: backend
+        run : gcloud auth login --cred-file=credentials.json
       # - name: Push Docker image for frontend to Google Artifact Registry
       #   run: docker push asia-southeast2-docker.pkg.dev/${{ secrets.PROJECT_ID }}/voz20231/frontend:latest
 
