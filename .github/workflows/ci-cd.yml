@@ -37,14 +37,14 @@ jobs:
       - name: Use gcloud CLI
         run: gcloud info
   
-      - name: Setup Node.js environment
-        uses: actions/setup-node@v4.0.1
-        with:
-          node-version: "20.x"
+      # - name: Setup Node.js environment
+      #   uses: actions/setup-node@v4.0.1
+      #   with:
+      #     node-version: "20.x"
 
-      - name: Install dependencies for backend
-        working-directory: backend
-        run: npm install
+      # - name: Install dependencies for backend
+      #   working-directory: backend
+      #   run: npm install
 
       # - name: Install dependencies for frontend
       #   working-directory: frontend
@@ -54,21 +54,20 @@ jobs:
         run: |
           gcloud auth configure-docker asia-southeast2-docker.pkg.dev --quiet
 
-      - name: Build Docker image for backend
-        run: docker build -t asia-southeast2-docker.pkg.dev/${{ secrets.PROJECT_ID }}/voz20231/backend:latest . 
-        working-directory: backend
+      # - name: Build Docker image for backend
+      #   run: docker build -t asia-southeast2-docker.pkg.dev/${{ secrets.PROJECT_ID }}/voz20231/backend:latest . 
+      #   working-directory: backend
       
       # - name: Build Docker image for frontend
       #   run: docker build -t asia-southeast2-docker.pkg.dev/${{ secrets.PROJECT_ID }}/voz20231/frontend:latest . 
       #   working-directory: frontend
 
-      - name: Push Docker image for backend to Google Artifact Registry
-        run: docker push asia-southeast2-docker.pkg.dev/${{ secrets.PROJECT_ID }}/voz20231/backend:latest
+      # - name: Push Docker image for backend to Google Artifact Registry
+      #   run: docker push asia-southeast2-docker.pkg.dev/${{ secrets.PROJECT_ID }}/voz20231/backend:latest
       - name: create credentials
         working-directory: backend
         run: |-
-          echo > credentials.json
-          && echo "${{secrets.GOOGLE_APPLICATION_CREDENTIALS}}" >> credentials.json
+          echo > credentials.json && echo "${{secrets.GOOGLE_APPLICATION_CREDENTIALS}}" >> credentials.json
       - name: show pwd
         run: |-
           pwd && ls && echo "${{secrets.GOOGLE_APPLICATION_CREDENTIALS}}"
