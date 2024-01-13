@@ -64,8 +64,8 @@ jobs:
 
       - name: Push Docker image for backend to Google Artifact Registry
         run: docker push asia-southeast2-docker.pkg.dev/${{ secrets.PROJECT_ID }}/voz20231/backend:latest
-      - name: create credentials
-        working-directory: backend
+      # - name: create credentials
+        # working-directory: backend
       - name: show pwd
         run: |-
           pwd && ls && echo "${{secrets.GOOGLE_APPLICATION_CREDENTIALS}}"
