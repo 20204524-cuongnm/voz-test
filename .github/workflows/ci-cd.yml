@@ -80,17 +80,17 @@ jobs:
       #     export SERVICE_NAME = backend
       #     export PROJECT_ID = ${{secrets.PROJECT_ID}}
 
-      - name: deploy backend
-        run : |- 
-          gcloud config set account cuong2905say@gmail.com
-          gcloud run deploy cloudrun-backend-service --image asia-southeast2-docker.pkg.dev/${{secrets.PROJECT_ID}}/voz20231/backend:latest --region asia-southeast2 --allow-unauthenticated
+      # - name: deploy backend
+      #   run : |- 
+      #     gcloud config set account cuong2905say@gmail.com &&
+      #     gcloud run deploy cloudrun-backend-service --image asia-southeast2-docker.pkg.dev/${{secrets.PROJECT_ID}}/voz20231/backend:latest --region asia-southeast2 --allow-unauthenticated
 
-      # - name: Deploy frontend to Google Cloud Run
-      #   uses: google-github-actions/deploy-cloudrun@main
-      #   with:
-      #     service_account_key: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}
-      #     image: asia-southeast2-docker.pkg.dev/${{ secrets.PROJECT_ID }}/voz20231/frontend:latest
-      #     service: cloudrun-frontend-service
-      #     region: asia-southeast2
-      #     project_id: ${{ secrets.PROJECT_ID }}
-      #     args: --allow-unauthenticated
+      - name: Deploy frontend to Google Cloud Run
+        uses: google-github-actions/deploy-cloudrun@main
+        with:
+          service_account_key: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}
+          image: asia-southeast2-docker.pkg.dev/${{ secrets.PROJECT_ID }}/voz20231/frontend:latest
+          service: cloudrun-frontend-service
+          region: asia-southeast2
+          project_id: ${{ secrets.PROJECT_ID }}
+          args: --allow-unauthenticated
