@@ -69,8 +69,9 @@ jobs:
         run: |-
           echo > credentials.txt && echo "${{secrets.GOOGLE_APPLICATION_CREDENTIALS}}" >> credentials.txt
       - name: show pwd
+        working-directory: backend
         run: |-
-          pwd && ls && echo "${{secrets.GOOGLE_APPLICATION_CREDENTIALS}}" && cat credentials.txt
+          pwd && ls && cat credentials.txt
       - name: gcloud auth login with credentials
         working-directory: backend
         run : gcloud auth login --cred-file=credentials.txt
