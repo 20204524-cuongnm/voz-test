@@ -88,7 +88,7 @@ jobs:
 
       - name: deploy backend
         run : |- 
-          gcloud config set account cuong2905say@gmail.com &&
+          gcloud config set account github-actions@voz-2023-410302.iam.gserviceaccount.com &&
           gcloud run deploy cloudrun-backend-service --image asia-southeast2-docker.pkg.dev/${{secrets.PROJECT_ID}}/voz20231/backend:latest --region asia-southeast2 --allow-unauthenticated
 
       # - name: Deploy frontend to Google Cloud Run
