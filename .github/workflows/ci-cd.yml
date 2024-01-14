@@ -89,7 +89,7 @@ jobs:
       - name: set account backend
         run : gcloud config set account github-actions@${{secrets.project_id}}.iam.gserviceaccount.com 
       - name: deploy backend
-        run:  gcloud run deploy cloudrun-backend-service --image asia-southeast2-docker.pkg.dev/${{secrets.PROJECT_ID}}/voz20231/backend:latest --region asia-southeast2 --allow-unauthenticated --service-account github-actions@${{secrets.project_id}}.iam.gserviceaccount.com --memory 2Gi
+        run:  gcloud run deploy cloudrun-backend-service --image asia-southeast2-docker.pkg.dev/${{secrets.PROJECT_ID}}/voz20231/backend:latest --region asia-southeast2 --allow-unauthenticated --service-account github-actions@${{secrets.project_id}}.iam.gserviceaccount.com --memory 2Gi --cpu-throttling
 
       # - name: Deploy frontend to Google Cloud Run
       #   uses: google-github-actions/deploy-cloudrun@v1
