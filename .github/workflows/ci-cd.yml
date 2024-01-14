@@ -67,11 +67,14 @@ jobs:
       - name: create credentials
         working-directory: backend
         run: |-
-          echo > credentials.txt && echo "${{secrets.GOOGLE_APPLICATION_CREDENTIALS}}" >> credentials.txt && cat credentials.txt
+          echo > credentials.txt && echo "${{secrets.GOOGLE_APPLICATION_CREDENTIALS}}" >> credentials.txt
       # - name: show pwd
       #   working-directory: backend
       #   run: |-
       #     pwd && ls && cat credentials.txt
+      - name: cat file
+        working-directory: backend
+        run: cat credentials.txt
       - name: gcloud auth login with credentials
         working-directory: backend
         run : gcloud auth login --cred-file=credentials.txt
