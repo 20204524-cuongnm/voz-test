@@ -15,9 +15,9 @@ COPY package.json .
 # force to install sharp
 # RUN chown root.root . 
 
-RUN npm --force install
+RUN npm install
 
-RUN npm --force install next
+RUN npm install next
 
 COPY . .
 
