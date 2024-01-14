@@ -67,7 +67,7 @@ jobs:
       - name: create credentials
         working-directory: backend
         run: |-
-          echo > credentials.txt && echo "${{secrets.GOOGLE_APPLICATION_CREDENTIALS}}" >> credentials.txt
+          echo > credentials.txt && echo '${{secrets.GOOGLE_APPLICATION_CREDENTIALS}}' >> credentials.txt
 
       # - name: show pwd
       #   working-directory: backend
