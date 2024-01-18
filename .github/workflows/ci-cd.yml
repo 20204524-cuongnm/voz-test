@@ -13,7 +13,7 @@ jobs:
     steps:          
       - name: Code Checkout
         uses: actions/checkout@master
-      - name: Create .env file
+      - name: Create .env file for backend
         uses: SpicyPizza/create-envfile@v2.0
         with:
           envkey_PORT: 3003
@@ -26,16 +26,18 @@ jobs:
           envkey_OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           envkey_GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           directory: backend
-          
+      - name: Create .env file for frontend
+        uses: SpicyPizza/create-envfile@v2.0
+        with:
+          envkey_PORT: 3000
+          envkey_BASE_URL: https://cloudrun-backend-service-tgfeqcujja-et.a.run.app
+          directory: frontend
       - name: Set up Cloud SDK
         uses: "google-github-actions/setup-gcloud@v1"
         with:
           project_id: ${{ secrets.PROJECT_ID }}
           service_account_key: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}
           export_default_credentials: true
-
-      # - name: Use gcloud CLI
-      #   run: gcloud info
   
       - name: Setup Node.js environment
         uses: actions/setup-node@v4.0.1
@@ -89,7 +91,7 @@ jobs:
       - name: set account backend
         run : gcloud config set account github-actions@${{secrets.project_id}}.iam.gserviceaccount.com 
       - name: deploy backend
-        run:  gcloud run deploy cloudrun-backend-service --image asia-southeast2-docker.pkg.dev/${{secrets.PROJECT_ID}}/voz20231/backend:latest --region asia-southeast2 --allow-unauthenticated --service-account github-actions@${{secrets.project_id}}.iam.gserviceaccount.com --memory 2Gi --cpu-throttling
+        run:  gcloud run deploy cloudrun-backend-service --image asia-southeast2-docker.pkg.dev/${{secrets.PROJECT_ID}}/voz20231/backend:latest --region asia-southeast2 --allow-unauthenticated --service-account github-actions@${{secrets.project_id}}.iam.gserviceaccount.com --memory 512Mi --cpu-throttling
 
       # - name: Deploy frontend to Google Cloud Run
       #   uses: google-github-actions/deploy-cloudrun@v1
